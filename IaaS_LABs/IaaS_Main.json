@@ -89,8 +89,7 @@
     "imageOffer": "WindowsServer",
     "imagePublisher": "MicrosoftWindowsServer",
     "imageSKU": "2016-Datacenter",
-    // "vNetID1": "[reference('Microsoft.Resources/deployments/Network').outputs.returnedvNetID1.value]",
-    "vNetID1": "Microsoft.Network/virtualNetworks/vNet1",
+    "vNetID1": "[reference('Microsoft.Resources/deployments/Network').outputs.returnedvNetID1.value]",
     "SubnetRef1": "[concat(variables('vNetID1'),'/subnets/', parameters('Subnet1'))]",
     "nicName": "[concat(parameters('vmName'),'-vNic')]",
     "vmPublicIP": "[concat(parameters('vmName'), '-PublicIP')]",
@@ -230,6 +229,5 @@
       }
     }
   ],
-  "outputs": {
-  }
+  "outputs": {}
 }
