@@ -90,7 +90,7 @@
     }
   },
   "variables": {
-    "vNetID1": "[concat(subscription().id,'/',parameters('vNetResourceGroup'),'/Microsoft.Network/virtualNetworks/',parameters('vNet1'),'/subnets/',parameters('Subnet1'))]",
+    //"vNetID1": "[concat(subscription().id,'/',parameters('vNetResourceGroup'),'/Microsoft.Network/virtualNetworks/',parameters('vNet1'),'/subnets/',parameters('Subnet1'))]",
     "imageOffer": "WindowsServer",
     "imagePublisher": "MicrosoftWindowsServer",
     "imageSKU": "2016-Datacenter",
@@ -178,7 +178,8 @@
         },
         "parameters": {
           "vNetID1": {
-            "value": "[variables('vNetID1')]"
+            //"value": "[variables('vNetID1')]"
+            "value":"[concat(reference('Microsoft.Resources/deployments/Network').outputs.returnedvNetID1.value,'/subnets/',parameters('Subnet1'))]"
           },
           "adminUsername": {
             "value": "[parameters('adminUsername')]"
