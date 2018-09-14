@@ -20,7 +20,7 @@
     "departmentName": {
       "type": "string"
     },
-    "existingBootDiagStorageName": {
+    "saName": {
       "type": "string"
     },
     "existingBootDiagStorageResourceGroup": {
@@ -150,7 +150,7 @@
         "diagnosticsProfile": {
           "bootDiagnostics": {
             "enabled": true,
-            "storageUri": "[reference(resourceId(parameters('existingBootDiagStorageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('existingBootDiagStorageName')), '2015-06-15').primaryEndpoints['blob']]"
+            "storageUri": "[reference(resourceId(parameters('existingBootDiagStorageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('saName')), '2015-06-15').primaryEndpoints['blob']]"
           }
         }
       }
