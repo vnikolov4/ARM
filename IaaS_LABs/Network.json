@@ -31,11 +31,11 @@
         ]
       }
     }
-  ],
-  "outputs": {
-    "returnedvNetID1": {
-      "type": "string",
-      "value": "[resourceId('Microsoft.Network/virtualNetworks',parameters('vNet1'))]"
-    }
-  }
+  ]
+  //"outputs": {
+  //  "returnedvNetID1": {
+  //    "type": "string",
+  //    "value": "[resourceId('Microsoft.Network/virtualNetworks',parameters('vNet1'))]"
+  //  }
+  //}
 }
