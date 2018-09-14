@@ -91,9 +91,6 @@
       "type": "string",
       "defaultValue": "https://raw.githubusercontent.com/vnikolov4/ARM/master/IaaS_LABs/"
     }
-    //"_artifactsLocationSasToken": {
-    //  "type": "securestring"
-    //}
   },
   "variables": {
     "imageOffer": "WindowsServer",
