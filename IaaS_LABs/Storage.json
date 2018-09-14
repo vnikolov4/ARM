@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "saName": {
+      "type": "string"
+    },
+    "saType": {
+      "type": "string"
+    },
+    "saKind": {
+      "type": "string"
+    },
+    "saTier": {
+      "type": "string"
+    },
+    "sahttpsTrafficOnlyEnabled": {
+      "type": "bool"
+    }
+  },
+  "resources": [
+    {
+      "name": "[parameters('saNAme')]",
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2018-07-01",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "[parameters('saType')]"
+      },
+      "kind": "[parameters('saKind')]",
+      "properties": {
+        "supportsHttpsTrafficOnly": "[parameters('sahttpsTrafficOnlyEnabled')]",
+        "accessTier": "[parameters('saTier')]",
+        "encryption": {
+          "services": {
+            "blob": {
+              "enabled": true
+            },
+            "file": {
+              "enabled": true
+            }
+          },
+          "keySource": "Microsoft.Storage"
+        }
+      }
+    }
+  ]
+}

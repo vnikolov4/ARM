@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vNet1": {
+      "type": "string"
+    },
+    "AddressSpace1": {
+      "type": "string"
+    },
+    "Subnet1": {
+      "type": "string"
+    },
+    "SubnetPrefix1": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "name": "[parameters('vNet1')]",
+      "type": "Microsoft.Network/virtualNetworks",
+      "apiVersion": "[providers('Microsoft.Network','virtualNetworks').apiVersions[0]]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "addressSpace": { "addressPrefixes": [ "[parameters('addressSpace1')]" ] },
+        "subnets": [
+          {
+            "name": "[parameters('Subnet1')]",
+            "properties": { "addressPrefix": "[parameters('subnetprefix1')]" }
+          }
+        ]
+      }
+    }
+  ],
+  "outputs": {}
+}
