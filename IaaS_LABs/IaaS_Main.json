@@ -43,13 +43,6 @@
         "description": "Storage account resource group name where boot diagnostics will be stored"
       }
     },
-    "existingBootDiagStorageName": {
-      "type": "String",
-      "defaultValue": "labprimgmsa",
-      "metadata": {
-        "description": "Storage account name where boot diagnostics will be stored. It should be at the same location as the VM."
-      }
-    },
     "vNet1": {
       "type": "string",
       "defaultValue": "LAB-PR-vNET1",
@@ -199,8 +192,8 @@
           "departmentName": {
             "value": "[parameters('departmentName')]"
           },
-          "existingBootDiagStorageName": {
-            "value": "[parameters('existingBootDiagStorageName')]"
+          "saName": {
+            "value": "[parameters('saName')]"
           },
           "existingBootDiagStorageResourceGroup": {
             "value": "[parameters('existingBootDiagStorageResourceGroup')]"
