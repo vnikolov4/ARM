@@ -41,6 +41,9 @@
     "Subnet1": {
       "type": "string"
     },
+    "vNetID1": {
+      "type": "string"
+    },
     "nicName": {
       "type": "string"
     },
@@ -81,7 +84,7 @@
               "privateIPAllocationMethod": "Static",
               "privateIPAddress": "[parameters('privateIPAddress')]",
               "subnet": {
-                "id": "[concat(reference('Microsoft.Resources/deployments/Network').outputs.returnedvNetID1.value,'/subnets/',parameters('Subnet1'))]"
+                "id": "[parameters('vNetID1')]"
               },
               "publicIPAddress": { "id": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('vmPublicIP'))]" }
             }
