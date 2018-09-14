@@ -86,18 +86,21 @@
     }
   },
   "variables": {
-    "imageOffer": "WindowsServer",
-    "imagePublisher": "MicrosoftWindowsServer",
-    "imageSKU": "2016-Datacenter",
-    "nicName": "[concat(parameters('vmName'),'-vNic')]",
-    "vmPublicIP": "[concat(parameters('vmName'), '-PublicIP')]",
-    "OSDiskName": "[concat(parameters('vmName'), '-osDisk')]",
-    "DataDiskName": "[concat(parameters('vmName'), '-dataDisk0')]",
-    "saType": "Standard_LRS",
-    "saKind": "StorageV2",
-    "saTier": "Hot",
-    "sahttpsTrafficOnlyEnabled": false
-  },
+    "vNetID1": {
+      "value": "[concat(reference('Microsoft.Resources/deployments/Network').outputs.returnedvNetID1.value,'/subnets/',parameters('Subnet1'))]"
+    },
+      "imageOffer": "WindowsServer",
+      "imagePublisher": "MicrosoftWindowsServer",
+      "imageSKU": "2016-Datacenter",
+      "nicName": "[concat(parameters('vmName'),'-vNic')]",
+      "vmPublicIP": "[concat(parameters('vmName'), '-PublicIP')]",
+      "OSDiskName": "[concat(parameters('vmName'), '-osDisk')]",
+      "DataDiskName": "[concat(parameters('vmName'), '-dataDisk0')]",
+      "saType": "Standard_LRS",
+      "saKind": "StorageV2",
+      "saTier": "Hot",
+      "sahttpsTrafficOnlyEnabled": false
+    },
   "resources": [
     {
       "name": "Network",
@@ -172,6 +175,9 @@
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
+          "vNetID1": {
+            "value": "[variables('vNetID1')]"
+          },
           "adminUsername": {
             "value": "[parameters('adminUsername')]"
           },
