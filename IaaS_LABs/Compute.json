@@ -38,7 +38,7 @@
     "imageSKU": {
       "type": "string"
     },
-    "SubnetRef1": {
+    "Subnet1": {
       "type": "string"
     },
     "nicName": {
@@ -81,7 +81,7 @@
               "privateIPAllocationMethod": "Static",
               "privateIPAddress": "[parameters('privateIPAddress')]",
               "subnet": {
-                "id": "[parameters('subnetRef1')]"
+                "id": "[concat(reference('Network').outputs.returnedvNetID1.value,'/subnets/',parameters('Subnet1'))]"
               },
               "publicIPAddress": { "id": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('vmPublicIP'))]" }
             }
