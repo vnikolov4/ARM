@@ -105,7 +105,7 @@
     "saType": "Standard_LRS",
     "saKind": "StorageV2",
     "saTier": "Hot",
-    "sahttpsTrafficOnlyEnabled": "false"
+    "sahttpsTrafficOnlyEnabled": false
   },
   "resources": [
     {
