@@ -177,7 +177,6 @@
         },
         "parameters": {
           "vNetID1": {
-            //"value": "[variables('vNetID1')]"
             "value":"[concat(reference('Microsoft.Resources/deployments/Network').outputs.returnedvNetID1.value,'/subnets/',parameters('Subnet1'))]"
           },
           "adminUsername": {
