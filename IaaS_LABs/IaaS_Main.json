@@ -90,7 +90,6 @@
     }
   },
   "variables": {
-    //"vNetID1": "[concat(subscription().id,'/',parameters('vNetResourceGroup'),'/Microsoft.Network/virtualNetworks/',parameters('vNet1'),'/subnets/',parameters('Subnet1'))]",
     "imageOffer": "WindowsServer",
     "imagePublisher": "MicrosoftWindowsServer",
     "imageSKU": "2016-Datacenter",
