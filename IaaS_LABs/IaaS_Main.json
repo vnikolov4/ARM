@@ -43,6 +43,13 @@
         "description": "Storage account resource group name where boot diagnostics will be stored"
       }
     },
+    "existingSA": {
+      "type": "string",
+      "allowedValues": [
+        "Yes",
+        "No"
+      ]
+    },
     "vNetResourceGroup": {
       "type": "string",
       "defaultValue": "LAB-PR-NET-RG"
@@ -139,6 +146,7 @@
     },
     {
       "name": "Storage",
+      "condition": "[equals(parameters('ExistingSA'), 'No')]",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2018-05-01",
       "resourceGroup": "LAB-PR-STR-RG",
