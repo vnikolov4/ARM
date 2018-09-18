@@ -76,6 +76,13 @@
         "description": "Static Private IP will be assigned to the machine"
       }
     },
+    "dnsIP1": {
+      "type": "String",
+      "defaultValue": "127.0.0.1",
+      "metadata": {
+        "description": "Static Private IP will be assigned to the machine"
+      }
+    },
     "saName": {
       "type": "string",
       "defaultValue": "labprmgmtsa"
@@ -105,7 +112,7 @@
   },
   "resources": [
     {
-      "name": "[concat(parameters('vmPublicIP'))]",
+      "name": "[concat(variables('vmPublicIP'))]",
       "type": "Microsoft.Network/publicIPAddresses",
       "apiVersion": "2018-08-01",
       "location": "[variables('location')]",
@@ -122,25 +129,11 @@
       "dependsOn": [
         "[resourceId('Microsoft.Network/publicIPAddresses', variables('vmPublicIP'))]"
       ],
-      "properties": {
-        "ipConfigurations": [
-          {
-            "name": "Prod",
-            "properties": {
-              "privateIPAllocationMethod": "Static",
-              "privateIPAddress": "[parameters('privateIPAddress')]",
-              "subnet": {
-                "id": "[variables('vNetID1')]"
-              },
-              "publicIPAddress": { "id": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('vmPublicIP'))]" }
-            }
-          }
-        ],
-        "dnsSettings": {
-          "dnsServers": [
-            "[parameters('dnsIP1')]"
-          ]
-        }
+      "properties": {},
+      "dnsSettings": {
+        "dnsServers": [
+          "[parameters('dnsIP1')]"
+        ]
       }
     },
     {
@@ -150,7 +143,7 @@
       "comments": "Windows Virtual Machine",
       "location": "[variables('location')]",
       "dependsOn": [
-        "[ResourceID('Microsoft.Network/networkInterfaces/', parameters('nicName'))]"
+        "[ResourceID('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
       ],
       "tags": {
         "DXC_AutoDeploy": "True",
@@ -158,57 +151,18 @@
         "DepartmentName": "[parameters('departmentName')]",
         "Project": "LAB"
       },
-      "properties": {
-        "hardwareProfile": {
-          "vmSize": "[parameters('vmSize')]"
-        },
-        "osProfile": {
-          "computerName": "[parameters('vmName')]",
-          "adminUsername": "[parameters('adminUsername')]",
-          "adminPassword": "[parameters('adminPassword')]"
-        },
-        "storageProfile": {
-          "imageReference": {
-            "publisher": "[parameters('imagePublisher')]",
-            "offer": "[parameters('imageOffer')]",
-            "sku": "[parameters('imageSKU')]",
-            "version": "latest"
-          },
-          "osDisk": {
-            "name": "[parameters('osDiskName')]",
-            "createOption": "FromImage",
-            "managedDisk": {
-              "StorageAccountType": "StandardSSD_LRS"
-            }
-          },
-          "dataDisks": [
-            {
-              "name": "[parameters('DataDiskName')]",
-              "caching": "None",
-              "diskSizeGB": "[parameters('sizeOfDiskInGB')]",
-              "lun": 0,
-              "createOption": "Empty",
-              "managedDisk": {
-                "StorageAccountType": "StandardSSD_LRS"
-              }
-            }
-          ]
-        },
-        "networkProfile": {
-          "networkInterfaces": [
-            {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces',parameters('nicName'))]"
-            }
-          ]
-        },
-        "diagnosticsProfile": {
-          "bootDiagnostics": {
-            "enabled": true,
-            "storageUri": "[reference(resourceId(parameters('existingBootDiagStorageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('saName')), '2015-06-15').primaryEndpoints['blob']]"
+      "networkProfile": {
+        "networkInterfaces": [
+          {
+            "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicName'))]"
           }
+        ]
+      },
+      "diagnosticsProfile": {
+        "bootDiagnostics": {
+          "enabled": true,
+          "storageUri": "[reference(resourceId(parameters('existingBootDiagStorageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('saName')), '2015-06-15').primaryEndpoints['blob']]"
         }
       }
     }
-  ],
-  "outputs": {}
-}
+} ], "outputs": {} }
