@@ -38,28 +38,25 @@
         "autoUpgradeMinorVersion": true,
         "settings": {
           "wmfVersion": "latest",
-          "configuration": {
-            "url": "https://raw.githubusercontent.com/vnikolov4/ARM/master/IaaS_LABs/DSC/CreateADPDC.zip",
-            "script": "CreateADPDC.ps1",
-            "function": "CreateADPDC",
-            "Properties": {
-              "DomainName": "[parameters('domainName')]",
-              "AdminCreds": {
-                "UserName": "[parameters('adminUsername')]",
-                "Password": "PrivateSettingsRef:AdminPassword"
-              }
-            },
-            "protectedSettings": {
-              "Items": {
-                "AdminPassword": "[parameters('adminPassword')]"
-              }
+          "ModulesUrl": "https://raw.githubusercontent.com/vnikolov4/ARM/master/IaaS_LABs/DSC/CreateADPDC.zip",
+          "sConfigurationFunction": "CreateADPDC.ps1\\CreateADPDC",
+          "Properties": {
+            "DomainName": "[parameters('domainName')]",
+            "AdminCreds": {
+              "UserName": "[parameters('adminUsername')]",
+              "Password": "PrivateSettingsRef:AdminPassword"
             }
           }
+        },
+        "protectedSettings": {
+          "Items": {
+            "AdminPassword": "[parameters('adminPassword')]"
+          }
         }
-        //"protectedSettings": {
-        //  "configurationUrlSasToken": "?sp=r&st=2018-09-13T13:16:54Z&se=2018-09-28T21:16:54Z&spr=https&sv=2017-11-09&sig=y0SGbnmP9XCCSI5evV0nwBlFqx2ZHpFoujHn%2F2Ptyck%3D&sr=b"
-        //}
       }
+      //"protectedSettings": {
+      //  "configurationUrlSasToken": "?sp=r&st=2018-09-13T13:16:54Z&se=2018-09-28T21:16:54Z&spr=https&sv=2017-11-09&sig=y0SGbnmP9XCCSI5evV0nwBlFqx2ZHpFoujHn%2F2Ptyck%3D&sr=b"
+      //}
     }
   ]
 }
