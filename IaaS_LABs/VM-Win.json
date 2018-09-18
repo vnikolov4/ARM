@@ -130,6 +130,16 @@
         "[resourceId('Microsoft.Network/publicIPAddresses', variables('vmPublicIP'))]"
       ],
       "properties": {
+        "ipConfigurations": [
+          {
+            "name": "Prod",
+            "properties": {
+              "privateIPAllocationMethod": "Static",
+              "privateIPAddress": "[parameters('privateIPAddress')]",
+              "publicIPAddress": { "id": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('vmPublicIP'))]" }
+            }
+          }
+        ],
         "dnsSettings": {
           "dnsServers": [
             "[parameters('dnsIP1')]"
