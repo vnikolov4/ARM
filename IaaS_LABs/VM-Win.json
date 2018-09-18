@@ -136,7 +136,7 @@
             "properties": {
               "privateIPAllocationMethod": "Static",
               "privateIPAddress": "[parameters('privateIPAddress')]",
-              "publicIPAddress": { "id": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('vmPublicIP'))]" }
+              "publicIPAddress": { "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('vmPublicIP'))]" }
             }
           }
         ],
@@ -162,18 +162,14 @@
         "DepartmentName": "[parameters('departmentName')]",
         "Project": "LAB"
       },
-      "networkProfile": {
-        "networkInterfaces": [
-          {
-            "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicName'))]"
-          }
-        ]
-      },
       "diagnosticsProfile": {
         "bootDiagnostics": {
           "enabled": true,
           "storageUri": "[reference(resourceId(parameters('existingBootDiagStorageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('saName')), '2015-06-15').primaryEndpoints['blob']]"
         }
       }
+
     }
-} ], "outputs": {} }
+  ],
+  "outputs": {}
+}
