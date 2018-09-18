@@ -26,7 +26,7 @@
     },
     "vmSize": {
       "type": "string",
-      "defaultValue": "Standard_B1ms"
+      "defaultValue": "Standard_B2s"
     },
     "sizeOfDiskInGB": {
       "type": "string",
@@ -74,6 +74,13 @@
       "defaultValue": "10.10.10.10",
       "metadata": {
         "description": "Static Private IP will be assigned to the machine"
+      }
+    },
+    "dnsIP1": {
+      "type": "String",
+      "defaultValue": "127.0.0.1",
+      "metadata": {
+        "description": "Static DNS IP will be assigned to the machine"
       }
     },
     "saName": {
@@ -177,7 +184,7 @@
         },
         "parameters": {
           "vNetID1": {
-            "value":"[concat(reference('Microsoft.Resources/deployments/Network').outputs.returnedvNetID1.value,'/subnets/',parameters('Subnet1'))]"
+            "value": "[concat(reference('Microsoft.Resources/deployments/Network').outputs.returnedvNetID1.value,'/subnets/',parameters('Subnet1'))]"
           },
           "adminUsername": {
             "value": "[parameters('adminUsername')]"
@@ -205,6 +212,9 @@
           },
           "privateIPAddress": {
             "value": "[parameters('privateIPAddress')]"
+          },
+          "dnsIP1": {
+            "value": "[parameters('dnsIP1')]"
           },
           "imageOffer": {
             "value": "[variables('imageOffer')]"

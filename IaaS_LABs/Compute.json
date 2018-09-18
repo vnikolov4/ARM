@@ -29,6 +29,9 @@
     "privateIPAddress": {
       "type": "string"
     },
+    "dnsIP1": {
+      "type": "string"
+    },
     "imageOffer": {
       "type": "string"
     },
@@ -92,7 +95,12 @@
               "publicIPAddress": { "id": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('vmPublicIP'))]" }
             }
           }
-        ]
+        ],
+        "dnsSettings": {
+          "dnsServers": [
+            "[parameters('dnsIP1')]"
+          ]
+        }
       }
     },
     {

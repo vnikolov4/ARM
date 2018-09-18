@@ -12,11 +12,9 @@ configuration CreateADPDC
         [Int]$RetryIntervalSec=5
     )
 
-    Import-DscResource -ModuleName xActiveDirectory, xStorage, xNetworking, PSDesiredStateConfiguration, xPendingReboot
+    Import-DscResource -ModuleName xActiveDirectory, xStorage, PSDesiredStateConfiguration, xPendingReboot
     [System.Management.Automation.PSCredential ]$DomainCreds = New-Object System.Management.Automation.PSCredential ("${DomainName}\$($Admincreds.UserName)", $Admincreds.Password)
-    $Interface=Get-NetAdapter|Where Name -Like "Ethernet*"|Select-Object -First 1
-    $InterfaceAlias=$($Interface.Name)
-
+ 
     Node localhost
     {
         LocalConfigurationManager
@@ -45,14 +43,6 @@ configuration CreateADPDC
         {
             Ensure = "Present"
             Name = "RSAT-DNS-Server"
-            DependsOn = "[WindowsFeature]DNS"
-        }
-
-        xDnsServerAddress DnsServerAddress
-        {
-            Address        = '127.0.0.1'
-            InterfaceAlias = $InterfaceAlias
-            AddressFamily  = 'IPv4'
             DependsOn = "[WindowsFeature]DNS"
         }
 

@@ -4,7 +4,7 @@
   "parameters": {
     "adminUsername": {
       "type": "string",
-      "defaultValue": "DXC.Admin"
+      "defaultValue": "DXC.ADAdmin"
     },
     "adminPassword": {
       "type": "securestring",
@@ -28,7 +28,7 @@
     {
 
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(parameters('vmName'),'/DSCDemo')]",
+      "name": "[concat(parameters('vmName'),'/CreateADPDC')]",
       "apiVersion": "2018-06-01",
       "location": "[resourcegroup().location]",
       "properties": {
