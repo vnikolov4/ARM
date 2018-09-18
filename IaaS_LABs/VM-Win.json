@@ -162,12 +162,14 @@
         "DepartmentName": "[parameters('departmentName')]",
         "Project": "LAB"
       },
-      "networkProfile": {
-        "networkInterfaces": [
-          {
-            "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicName'))]"
-          }
-        ]
+      "properties": {
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicName'))]"
+            }
+          ]
+        }
       }
     }
   ],
