@@ -129,11 +129,12 @@
       "dependsOn": [
         "[resourceId('Microsoft.Network/publicIPAddresses', variables('vmPublicIP'))]"
       ],
-      "properties": {},
-      "dnsSettings": {
-        "dnsServers": [
-          "[parameters('dnsIP1')]"
-        ]
+      "properties": {
+        "dnsSettings": {
+          "dnsServers": [
+            "[parameters('dnsIP1')]"
+          ]
+        }
       }
     },
     {
