@@ -27,14 +27,14 @@
         "settings": {
           "wmfVersion": "latest",
           "configuration": {
-            "url": "https://labprimgmsa.blob.core.windows.net/windows-powershell-dsc/DSCDemo.zip",
-            "script": "DSCDemo.ps1",
-            "function": "DSCDemo"
+            "url": "https://raw.githubusercontent.com/vnikolov4/ARM/master/IaaS_LABs/DSC/CreateADPDC.zip",
+            "script": "CreateADPDC.ps1",
+            "function": "CreateADPDC"
           }
-        },
-        "protectedSettings": {
-          "configurationUrlSasToken": "?sp=r&st=2018-09-13T13:16:54Z&se=2018-09-28T21:16:54Z&spr=https&sv=2017-11-09&sig=y0SGbnmP9XCCSI5evV0nwBlFqx2ZHpFoujHn%2F2Ptyck%3D&sr=b"
         }
+        //"protectedSettings": {
+        //  "configurationUrlSasToken": "?sp=r&st=2018-09-13T13:16:54Z&se=2018-09-28T21:16:54Z&spr=https&sv=2017-11-09&sig=y0SGbnmP9XCCSI5evV0nwBlFqx2ZHpFoujHn%2F2Ptyck%3D&sr=b"
+        //}
       }
     }
   ]
