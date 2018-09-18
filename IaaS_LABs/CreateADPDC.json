@@ -29,7 +29,7 @@
 
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "name": "[concat(parameters('vmName'),'/DSCDemo')]",
-      "apiVersion": "2015-06-15",
+      "apiVersion": "2018-06-01",
       "location": "[resourcegroup().location]",
       "properties": {
         "publisher": "Microsoft.Powershell",
