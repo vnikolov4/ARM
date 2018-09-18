@@ -1,0 +1,41 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vmName": {
+      "type": "string",
+      "defaultValue": "LAB-PR-DC01",
+      "maxLength": 15,
+      "metadata": {
+        "description": "The VM name in lower case, maximum 15-character size containing Data Center site code, Environment(bv), Resource Type(poc), Deployment(wvm) and Sequence(001), i.e. bvpoctstwvm001"
+      }
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[concat(parameters('vmName'),'/DSCDemo')]",
+      "apiVersion": "2015-06-15",
+      "location": "[resourcegroup().location]",
+      "properties": {
+        "publisher": "Microsoft.Powershell",
+        "type": "DSC",
+        "typeHandlerVersion": "2.76",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+          "wmfVersion": "latest",
+          "configuration": {
+            "url": "https://labprimgmsa.blob.core.windows.net/windows-powershell-dsc/DSCDemo.zip",
+            "script": "DSCDemo.ps1",
+            "function": "DSCDemo"
+          }
+        },
+        "protectedSettings": {
+          "configurationUrlSasToken": "?sp=r&st=2018-09-13T13:16:54Z&se=2018-09-28T21:16:54Z&spr=https&sv=2017-11-09&sig=y0SGbnmP9XCCSI5evV0nwBlFqx2ZHpFoujHn%2F2Ptyck%3D&sr=b"
+        }
+      }
+    }
+  ]
+}
