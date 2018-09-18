@@ -57,12 +57,15 @@
       "type": "string"
     }
   },
+  "variables": {
+    "location": "[resourceGroup().location]"
+  },
   "resources": [
     {
       "name": "[concat(parameters('vmPublicIP'))]",
       "type": "Microsoft.Network/publicIPAddresses",
       "apiVersion": "2018-08-01",
-      "location": "[resourceGroup().location]",
+      "location": "[variables('location')]",
       "properties": {
         "publicIPAllocationMethod": "Dynamic"
       }
@@ -72,7 +75,7 @@
       "type": "Microsoft.Network/networkInterfaces",
       "apiVersion": "2018-08-01",
       "comments": "Windows Virtual Machine NIC",
-      "location": "[resourceGroup().location]",
+      "location": "[variables('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Network/publicIPAddresses', parameters('vmPublicIP'))]"
       ],
@@ -97,7 +100,7 @@
       "type": "Microsoft.Compute/virtualMachines",
       "apiVersion": "2018-06-01",
       "comments": "Windows Virtual Machine",
-      "location": "[resourcegroup().location]",
+      "location": "[variables('location')]",
       "dependsOn": [
         "[ResourceID('Microsoft.Network/networkInterfaces/', parameters('nicName'))]"
       ],
