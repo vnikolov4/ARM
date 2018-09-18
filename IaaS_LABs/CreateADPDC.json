@@ -2,6 +2,18 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "adminUsername": {
+      "type": "string",
+      "defaultValue": "DXC.Admin"
+    },
+    "adminPassword": {
+      "type": "securestring",
+      "defaultValue": "Welcome_2018!"
+    },
+    "domainName": {
+      "type": "string",
+      "defaultValue": "lab.local"
+    },
     "vmName": {
       "type": "string",
       "defaultValue": "LAB-PR-DC01",
@@ -29,7 +41,19 @@
           "configuration": {
             "url": "https://raw.githubusercontent.com/vnikolov4/ARM/master/IaaS_LABs/DSC/CreateADPDC.zip",
             "script": "CreateADPDC.ps1",
-            "function": "CreateADPDC"
+            "function": "CreateADPDC",
+            "Properties": {
+              "DomainName": "[parameters('domainName')]",
+              "AdminCreds": {
+                "UserName": "[parameters('adminUsername')]",
+                "Password": "PrivateSettingsRef:AdminPassword"
+              }
+            },
+            "protectedSettings": {
+              "Items": {
+                "AdminPassword": "[parameters('adminPassword')]"
+              }
+            }
           }
         }
         //"protectedSettings": {
