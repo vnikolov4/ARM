@@ -62,7 +62,7 @@
   },
   "variables": {
     "location": "[resourceGroup().location]"
-  },
+  },gg
   "resources": [
     {
       "name": "[concat(parameters('vmPublicIP'))]",
