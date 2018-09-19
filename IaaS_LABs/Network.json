@@ -37,5 +37,7 @@
       "type": "string",
       "value": "[resourceId('Microsoft.Network/virtualNetworks',parameters('vNet1'))]"
     }
+    dadasdas
+      dd
   }
 }
