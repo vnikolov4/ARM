@@ -98,7 +98,7 @@
   },
   "variables": {
     "vNetID": "[resourceId(parameters('existingvNetResourceGroup'),'Microsoft.Network/virtualNetworks',parameters('vNet'))]",
-    "subnetID": "[concat(variables('vNetID'), parameters('Subnet'))]",
+    "subnetID": "[concat(variables('vNetID'), '/subnets/',parameters('Subnet'))]",
     "imageOffer": "WindowsServer",
     "imagePublisher": "MicrosoftWindowsServer",
     "imageSKU": "2016-Datacenter",
