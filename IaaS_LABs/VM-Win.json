@@ -84,7 +84,7 @@
       }
     },
     "saName": {
-      "type": "string"
+      "type": "String"
     },
     "domainName": {
       "type": "string",
