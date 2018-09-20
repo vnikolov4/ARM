@@ -84,8 +84,7 @@
       }
     },
     "saName": {
-      "type": "string",
-      "defaultValue": "labprmgmsa"
+      "type": "string"
     },
     "domainName": {
       "type": "string",
