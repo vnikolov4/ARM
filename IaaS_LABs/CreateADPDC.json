@@ -38,7 +38,7 @@
         "autoUpgradeMinorVersion": true,
         "settings": {
           "wmfVersion": "latest",
-          "ModulesUrl": "https://raw.githubusercontent.com/vnikolov4/ARM/master/IaaS_LABs/DSC/CreateADPDC.ps1",
+          "ModulesUrl": "https://raw.githubusercontent.com/vnikolov4/ARM/master/IaaS_LABs/DSC/CreateADPDC.zip",
           "ConfigurationFunction": "CreateADPDC.ps1\\CreateADPDC",
           "Properties": {
             "DomainName": "[parameters('domainName')]",
