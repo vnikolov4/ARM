@@ -18,7 +18,6 @@
     },
     "vmName": {
       "type": "string",
-      "defaultValue": "LAB-PR-DC01",
       "maxLength": 15,
       "metadata": {
         "description": "The VM name in lower case, maximum 15-character size containing Data Center site code, Environment(bv), Resource Type(poc), Deployment(wvm) and Sequence(001), i.e. bvpoctstwvm001"
@@ -27,10 +26,6 @@
     "vmSize": {
       "type": "string",
       "defaultValue": "Standard_B2s"
-    },
-    "sizeOfDiskInGB": {
-      "type": "string",
-      "defaultValue": "10"
     },
     "departmentName": {
       "type": "string",
@@ -47,7 +42,7 @@
       "type": "string",
       "defaultValue": "LAB-PR-NET-RG"
     },
-    "vNet1": {
+    "vNet": {
       "type": "string",
       "defaultValue": "LAB-PR-vNET1",
       "metadata": {
@@ -58,7 +53,7 @@
       "type": "string",
       "defaultValue": "10.10.0.0/16"
     },
-    "Subnet1": {
+    "Subnet": {
       "type": "string",
       "defaultValue": "LAB-PR-vNET1_10.10.10.x_24",
       "metadata": {
@@ -71,16 +66,14 @@
     },
     "privateIPAddress": {
       "type": "String",
-      "defaultValue": "10.10.10.10",
       "metadata": {
         "description": "Static Private IP will be assigned to the machine"
       }
     },
     "dnsIP1": {
       "type": "String",
-      "defaultValue": "127.0.0.1",
       "metadata": {
-        "description": "Static Private IP will be assigned to the machine"
+        "description": "Static DNS"
       }
     },
     "saName": {
@@ -97,6 +90,7 @@
     }
   },
   "variables": {
+    "subnetID": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vNet'), parameters('Subnet'))]",
     "imageOffer": "WindowsServer",
     "imagePublisher": "MicrosoftWindowsServer",
     "imageSKU": "2016-Datacenter",
@@ -136,6 +130,10 @@
             "properties": {
               "privateIPAllocationMethod": "Static",
               "privateIPAddress": "[parameters('privateIPAddress')]",
+              "subnet": {
+                //"/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1"
+                "id": "[variables('subnetID')]"
+              },
               "publicIPAddress": { "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('vmPublicIP'))]" }
             }
           }
@@ -163,12 +161,41 @@
         "Project": "LAB"
       },
       "properties": {
+        "hardwareProfile": {
+          "vmSize": "[parameters('vmSize')]"
+        },
+        "osProfile": {
+          "computerName": "[parameters('vmName')]",
+          "adminUsername": "[parameters('adminUsername')]",
+          "adminPassword": "[parameters('adminPassword')]"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "[variables('imagePublisher')]",
+            "offer": "[variables('imageOffer')]",
+            "sku": "[variables('imageSKU')]",
+            "version": "latest"
+          },
+          "osDisk": {
+            "name": "[variables('osDiskName')]",
+            "createOption": "FromImage",
+            "managedDisk": {
+              "StorageAccountType": "StandardSSD_LRS"
+            }
+          }
+        },
         "networkProfile": {
           "networkInterfaces": [
             {
               "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicName'))]"
             }
           ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[reference(resourceId(parameters('existingBootDiagStorageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('saName')), '2015-06-15').primaryEndpoints['blob']]"
+          }
         }
       }
     }

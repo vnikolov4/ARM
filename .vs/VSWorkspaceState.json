@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\IaaS_LABs"
+    "\\IaaS_LABs",
+    "\\IaaS_LABs\\DSC"
   ],
-  "SelectedNode": "\\IaaS_LABs\\Network.json",
+  "SelectedNode": "\\IaaS_LABs",
   "PreviewInSolutionExplorer": false
 }
