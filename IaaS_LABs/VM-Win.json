@@ -31,6 +31,13 @@
       "type": "string",
       "defaultValue": "IT Department"
     },
+    "existingvNetResourceGroup": {
+      "type": "string",
+      "defaultValue": "LAB-PR-NET-RG",
+      "metadata": {
+        "description": "vNET RG"
+      }
+    },
     "existingBootDiagStorageResourceGroup": {
       "type": "string",
       "defaultValue": "LAB-PR-STR-RG",
@@ -78,7 +85,7 @@
     },
     "saName": {
       "type": "string",
-      "defaultValue": "labprmgmtsa"
+      "defaultValue": "labprmgmsa"
     },
     "domainName": {
       "type": "string",
@@ -90,7 +97,8 @@
     }
   },
   "variables": {
-    "subnetID": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vNet'), parameters('Subnet'))]",
+    "subnetID": "[resourceId(parameters('existingvNetResourceGroup'),'/Microsoft.Network/virtualNetworks/',parameters('vNet'),'/subnets/',parameters('Subnet'))]",
+    //"subnetID": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vNet'), parameters('Subnet'))]",
     "imageOffer": "WindowsServer",
     "imagePublisher": "MicrosoftWindowsServer",
     "imageSKU": "2016-Datacenter",
