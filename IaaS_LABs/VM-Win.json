@@ -97,7 +97,7 @@
     }
   },
   "variables": {
-    "vNetRGID": "[resourceId(parameters('existingvNetResourceGroup'),'Microsoft.Network/virtualNetworks')]",
+    "vNetRGID": "[resourceId(parameters('existingvNetResourceGroup'),'Microsoft.Network/virtualNetworks',parameters('vNet'))]",
     //"subnetID": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vNet'), parameters('Subnet'))]",
     "imageOffer": "WindowsServer",
     "imagePublisher": "MicrosoftWindowsServer",
