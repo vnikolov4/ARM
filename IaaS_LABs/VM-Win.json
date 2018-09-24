@@ -83,6 +83,12 @@
         "description": "Static DNS"
       }
     },
+    "dnsIP2": {
+      "type": "String",
+      "metadata": {
+        "description": "Static DNS"
+      }
+    },
     "saName": {
       "type": "String"
     },
@@ -148,7 +154,8 @@
         ],
         "dnsSettings": {
           "dnsServers": [
-            "[parameters('dnsIP1')]"
+            "[parameters('dnsIP1')]",
+            "[parameters('dnsIP2')]"
           ]
         }
       }
