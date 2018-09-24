@@ -121,6 +121,7 @@
         "publicIPAllocationMethod": "Dynamic"
       }
     },
+
     {
       "name": "[variables('nicName')]",
       "type": "Microsoft.Network/networkInterfaces",

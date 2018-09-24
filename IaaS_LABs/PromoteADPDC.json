@@ -26,7 +26,6 @@
   "variables": {},
   "resources": [
     {
-
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "name": "[concat(parameters('vmName'),'/CreateADPDC')]",
       "apiVersion": "2018-06-01",

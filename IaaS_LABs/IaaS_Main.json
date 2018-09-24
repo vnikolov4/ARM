@@ -18,7 +18,6 @@
     },
     "vmName": {
       "type": "string",
-      "defaultValue": "LAB-PR-DC01",
       "maxLength": 15,
       "metadata": {
         "description": "The VM name in lower case, maximum 15-character size containing Data Center site code, Environment(bv), Resource Type(poc), Deployment(wvm) and Sequence(001), i.e. bvpoctstwvm001"
@@ -32,9 +31,8 @@
       "type": "string",
       "defaultValue": "10"
     },
-    "departmentName": {
-      "type": "string",
-      "defaultValue": "IT Department"
+    "tagsApplication": {
+      "type": "string"
     },
     "existingBootDiagStorageResourceGroup": {
       "type": "string",
@@ -209,8 +207,8 @@
           "sizeOfDiskInGB": {
             "value": "[parameters('sizeOfDiskInGB')]"
           },
-          "departmentName": {
-            "value": "[parameters('departmentName')]"
+          "tagsApplication": {
+            "value": "[parameters('tagsApplication')]"
           },
           "saName": {
             "value": "[parameters('saName')]"

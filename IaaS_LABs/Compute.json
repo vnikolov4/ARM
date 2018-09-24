@@ -17,7 +17,7 @@
     "sizeOfDiskInGB": {
       "type": "string"
     },
-    "departmentName": {
+    "tagsApplication": {
       "type": "string"
     },
     "saName": {
@@ -115,8 +115,8 @@
       ],
       "tags": {
         "DXC_AutoDeploy": "True",
-        "Application": "Active Directory Domain Controller",
-        "DepartmentName": "[parameters('departmentName')]",
+        "Application": "[parameters('tagsApplication')]",
+        "DepartmentName": "IT Department",
         "Project": "LAB"
       },
       "properties": {
