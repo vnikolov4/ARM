@@ -113,15 +113,15 @@
               "durationType": "Days"
             }
           },
-          "weeklySchedule": {
+          "weeklySchedule": null,
             //"daysOfTheWeek": "[parameters('daysOfTheWeek')]",
             //"retentionTimes": "[parameters('scheduleRunTimes')]",
             //"retentionDuration": {
             //  "count": "[parameters('weeklyRetentionDurationCount')]",
             //  "durationType": "Weeks"
             //}
-          },
-          "monthlySchedule": {
+          //},
+          "monthlySchedule": null,
             //"retentionScheduleFormatType": "Daily",
             //"retentionScheduleDaily": {
             //  "daysOfTheMonth": [
@@ -137,8 +137,8 @@
             //  "count": "[parameters('monthlyRetentionDurationCount')]",
             //  "durationType": "Months"
             //}
-          },
-          "yearlySchedule": {
+          //},
+          "yearlySchedule": null,
             //"retentionScheduleFormatType": "Daily",
             //"monthsOfYear": "[parameters('monthsOfYear')]",
             //"retentionScheduleDaily": {
@@ -155,7 +155,7 @@
             //  "count": "[parameters('yearlyRetentionDurationCount')]",
             //  "durationType": "Years"
             //}
-          },
+          //},
           "retentionPolicyType": "LongTermRetentionPolicy"
         },
         "timeZone": "[parameters('timeZone')]"
