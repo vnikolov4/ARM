@@ -36,7 +36,7 @@
     },
     "daysOfTheWeek": {
       "type": "array",
-      "defaultValue": "Monday",
+      "defaultValue": ["Monday"],
       "metadata": {
         "description": "Backup will run on array of Days like, Monday, Tuesday etc. Applies in Weekly retention only."
       }
@@ -57,7 +57,7 @@
     },
     "monthsOfYear": {
       "type": "array",
-      "defaultValue": "August",
+      "defaultValue": [ "August" ],
       "metadata": {
         "description": "Array of Months for Yearly Retention"
       }
