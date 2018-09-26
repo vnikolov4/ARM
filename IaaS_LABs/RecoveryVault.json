@@ -34,12 +34,12 @@
         "description": "Number of days you want to retain the backup"
       }
     },
-    "daysOfTheWeek": {
-      "type": "array",
-      "metadata": {
-        "description": "Backup will run on array of Days like, Monday, Tuesday etc. Applies in Weekly retention only."
-      }
-    },
+    //"daysOfTheWeek": {
+    //  "type": "array",
+    //  "metadata": {
+    //    "description": "Backup will run on array of Days like, Monday, Tuesday etc. Applies in Weekly retention only."
+    //  }
+    //},
     //"weeklyRetentionDurationCount": {
     //  "type": "int",
     //  "metadata": {
