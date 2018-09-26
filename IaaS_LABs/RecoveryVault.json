@@ -34,36 +34,41 @@
         "description": "Number of days you want to retain the backup"
       }
     },
-    //"daysOfTheWeek": {
-    //  "type": "array",
-    //  "metadata": {
-    //    "description": "Backup will run on array of Days like, Monday, Tuesday etc. Applies in Weekly retention only."
-    //  }
-    //},
-    //"weeklyRetentionDurationCount": {
-    //  "type": "int",
-    //  "metadata": {
-    //    "description": "Number of weeks you want to retain the backup"
-    //  }
-    //},
-    //"monthlyRetentionDurationCount": {
-    //  "type": "int",
-    //  "metadata": {
-    //    "description": "Number of months you want to retain the backup"
-    //  }
-    //},
-    //"monthsOfYear": {
-    //  "type": "array",
-    //  "metadata": {
-    //    "description": "Array of Months for Yearly Retention"
-    //  }
-    //},
-    //"yearlyRetentionDurationCount": {
-    //  "type": "int",
-    //  "metadata": {
-    //    "description": "Number of years you want to retain the backup"
-    //  }
-    //},
+    "daysOfTheWeek": {
+      "type": "array",
+      "defaultValue": "Monday",
+      "metadata": {
+        "description": "Backup will run on array of Days like, Monday, Tuesday etc. Applies in Weekly retention only."
+      }
+    },
+    "weeklyRetentionDurationCount": {
+      "type": "int",
+      "defaultValue": 1,
+      "metadata": {
+        "description": "Number of weeks you want to retain the backup"
+      }
+    },
+    "monthlyRetentionDurationCount": {
+      "type": "int",
+      "defaultValue": 1,
+      "metadata": {
+        "description": "Number of months you want to retain the backup"
+      }
+    },
+    "monthsOfYear": {
+      "type": "array",
+      "defaultValue": "August",
+      "metadata": {
+        "description": "Array of Months for Yearly Retention"
+      }
+    },
+    "yearlyRetentionDurationCount": {
+      "type": "int",
+      "defaultValue": 1,
+      "metadata": {
+        "description": "Number of years you want to retain the backup"
+      }
+    },
     "location": {
       "type": "string",
       "defaultValue": "[resourceGroup().location]",
@@ -107,51 +112,51 @@
               "count": "[parameters('dailyRetentionDurationCount')]",
               "durationType": "Days"
             }
-          }
-          //"weeklySchedule": {
-          //  "daysOfTheWeek": "[parameters('daysOfTheWeek')]",
-          //  "retentionTimes": "[parameters('scheduleRunTimes')]",
-          //  "retentionDuration": {
-          //    "count": "[parameters('weeklyRetentionDurationCount')]",
-          //    "durationType": "Weeks"
-          //  }
-          //},
-          //"monthlySchedule": {
-          //  "retentionScheduleFormatType": "Daily",
-          //  "retentionScheduleDaily": {
-          //    "daysOfTheMonth": [
-          //      {
-          //        "date": 1,
-          //        "isLast": false
-          //      }
-          //    ]
-          //  },
-          //  "retentionScheduleWeekly": null,
-          //  "retentionTimes": "[parameters('scheduleRunTimes')]",
-          //  "retentionDuration": {
-          //    "count": "[parameters('monthlyRetentionDurationCount')]",
-          //    "durationType": "Months"
-          //  }
-          //},
-          //"yearlySchedule": {
-          //  "retentionScheduleFormatType": "Daily",
-          //  "monthsOfYear": "[parameters('monthsOfYear')]",
-          //  "retentionScheduleDaily": {
-          //    "daysOfTheMonth": [
-          //      {
-          //        "date": 1,
-          //        "isLast": false
-          //      }
-          //    ]
-          //  },
-          //  "retentionScheduleWeekly": null,
-          //  "retentionTimes": "[parameters('scheduleRunTimes')]",
-          //  "retentionDuration": {
-          //    "count": "[parameters('yearlyRetentionDurationCount')]",
-          //    "durationType": "Years"
-          //  }
-          //},
-          //"retentionPolicyType": "LongTermRetentionPolicy"
+          },
+          "weeklySchedule": {
+            "daysOfTheWeek": "[parameters('daysOfTheWeek')]",
+            "retentionTimes": "[parameters('scheduleRunTimes')]",
+            "retentionDuration": {
+              "count": "[parameters('weeklyRetentionDurationCount')]",
+              "durationType": "Weeks"
+            }
+          },
+          "monthlySchedule": {
+            "retentionScheduleFormatType": "Daily",
+            "retentionScheduleDaily": {
+              "daysOfTheMonth": [
+                {
+                  "date": 1,
+                  "isLast": false
+                }
+              ]
+            },
+            "retentionScheduleWeekly": null,
+            "retentionTimes": "[parameters('scheduleRunTimes')]",
+            "retentionDuration": {
+              "count": "[parameters('monthlyRetentionDurationCount')]",
+              "durationType": "Months"
+            }
+          },
+          "yearlySchedule": {
+            "retentionScheduleFormatType": "Daily",
+            "monthsOfYear": "[parameters('monthsOfYear')]",
+            "retentionScheduleDaily": {
+              "daysOfTheMonth": [
+                {
+                  "date": 1,
+                  "isLast": false
+                }
+              ]
+            },
+            "retentionScheduleWeekly": null,
+            "retentionTimes": "[parameters('scheduleRunTimes')]",
+            "retentionDuration": {
+              "count": "[parameters('yearlyRetentionDurationCount')]",
+              "durationType": "Years"
+            }
+          },
+          "retentionPolicyType": "LongTermRetentionPolicy"
         },
         "timeZone": "[parameters('timeZone')]"
       }
