@@ -38,7 +38,7 @@
   },
   "resources": [
     {
-      "name": "parameters('burTargets')[copyIndex()])",
+      "name": "test",
       "apiVersion": "2016-06-01",
       "location": "[parameters('location')]",
       "type": "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems",
