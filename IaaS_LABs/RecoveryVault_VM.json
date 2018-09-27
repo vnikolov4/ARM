@@ -38,7 +38,7 @@
   },
   "resources": [
     {
-      "name": "[concat(parameters('existingRecoveryServicesVaultName'), '/', variables('backupFabric'), '/', '/', parameters('burTargets')[copyIndex()])]",
+      "name": "parameters('burTargets')[copyIndex()])",
       "apiVersion": "2016-06-01",
       "location": "[parameters('location')]",
       "type": "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems",
