@@ -51,8 +51,6 @@
     }
   },
   "variables": {
-    "rgID": "[resourceId(parameters('existingvNetResourceGroup'),'Microsoft.Network/virtualNetworks',parameters('vNet'))]",
-    "subnetID": "[concat(variables('vNetID'), '/subnets/',parameters('Subnet'))]",
     "backupFabric": "Azure",
     "protectedItemType": "Microsoft.Compute/virtualMachines"
   },
