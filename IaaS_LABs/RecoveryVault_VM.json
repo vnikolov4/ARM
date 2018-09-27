@@ -49,7 +49,7 @@
       "properties": {
         "protectedItemType": "[variables('protectedItemType')]",
         "policyId": "[resourceId('Microsoft.RecoveryServices/vaults/backupPolicies', parameters('existingRecoveryServicesVaultName'), parameters('existingBackupPolicyName'))]",
-        "sourceResourceId": "[resourceId(parameters('vmRG'),variables('protectedItemType'),parameters('burTargets'))[copyIndex()]]"
+        "sourceResourceId": "[resourceId(parameters('vmRG'),variables('protectedItemType'),parameters('burTargets')[copyIndex()])]"
       }
     }
   ]
