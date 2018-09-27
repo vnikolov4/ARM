@@ -14,24 +14,6 @@
         "description": "List of VMs to be BUR protected"
       }
     },
-    //"existingProtectionContainers": {
-    //  "type": "array",
-    //  "metadata": {
-    //    "description": "Array of iaasvm protection containers. This will take different input for classic and ARM vms. e.g. iaasvmcontainer;iaasvmcontainerv2;my-resource-group;my-arm-vm for ARM vm and iaasvmcontainer;iaasvmcontainer;my-classic-vm;my-classic-vm for classic vm"
-    //  }
-    //},
-    //"existingProtectableItems": {
-    //  "type": "array",
-    //  "metadata": {
-    //    "description": "Array of iaasvm protectable items. This will take different input for classic and ARM vms. e.g. vm;iaasvmcontainerv2;my-resource-group;my-arm-vm for ARM vm and vm;iaasvmcontainer;my-classic-vm;my-classic-vm for classic vm"
-    //  }
-    //},
-    //"existingSourceResourceIds": {
-    //  "type": "array",
-    //  "metadata": {
-    //    "description": "Array of resourceid of iaasvm protectable items. Provide resourceids of each VMs for which you want to configure protection. e.g. /subscriptions/subscriptionid/resourceGroups/resourceGroupName/providers/Microsoft.Compute/virtualMachines/vmName"
-    //  }
-    //},
     "existingBackupPolicyName": {
       "type": "string",
       "metadata": {
@@ -62,7 +44,7 @@
       "type": "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems",
       "copy": {
         "name": "protectedItemsCopy",
-        "count": "[length(parameters('existingProtectableItems'))]"
+        "count": "[length(parameters('burTargets'))]"
       },
       "properties": {
         "protectedItemType": "[variables('protectedItemType')]",
