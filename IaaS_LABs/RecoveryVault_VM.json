@@ -2,16 +2,16 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "existingRecoveryServicesVaultName": {
-      "type": "string",
-      "metadata": {
-        "description": "Name of the Existing Recovery Services Vault (Vault and VM to be protected must be in same GEO)"
-      }
-    },
     "burTargets": {
       "type": "array",
       "metadata": {
         "description": "List of VMs to be BUR protected"
+      }
+    },
+    "existingRecoveryServicesVaultName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Existing Recovery Services Vault (Vault and VM to be protected must be in same GEO)"
       }
     },
     "existingBackupPolicyName": {
