@@ -55,17 +55,11 @@
         "description": "vNET Name"
       }
     },
-    "AddressSpace1": {
-      "type": "string"
-    },
     "Subnet": {
       "type": "string",
       "metadata": {
         "description": "The Subnet for the VM."
       }
-    },
-    "SubnetPrefix1": {
-      "type": "string"
     },
     "privateIPAddress": {
       "type": "String",
@@ -87,14 +81,6 @@
     },
     "saName": {
       "type": "String"
-    },
-    "domainName": {
-      "type": "string",
-      "defaultValue": "azurelab.local"
-    },
-    "_artifactsLocation": {
-      "type": "string",
-      "defaultValue": "https://raw.githubusercontent.com/vnikolov4/ARM/master/IaaS_LABs/"
     }
   },
   "variables": {
@@ -106,11 +92,6 @@
     "nicName": "[concat(parameters('vmName'),'-vNic')]",
     "vmPublicIP": "[concat(parameters('vmName'), '-PublicIP')]",
     "OSDiskName": "[concat(parameters('vmName'), '-osDisk')]",
-    "DataDiskName": "[concat(parameters('vmName'), '-dataDisk0')]",
-    "saType": "Standard_LRS",
-    "saKind": "StorageV2",
-    "saTier": "Hot",
-    "sahttpsTrafficOnlyEnabled": false,
     "location": "[resourceGroup().location]"
   },
   "resources": [
@@ -192,7 +173,7 @@
             "name": "[variables('osDiskName')]",
             "createOption": "FromImage",
             "managedDisk": {
-              "StorageAccountType": "StandardSSD_LRS"
+              "StorageAccountType": "PremiumSSD_LRS"
             }
           }
         },
