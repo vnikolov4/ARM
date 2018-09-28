@@ -51,25 +51,21 @@
     },
     "vNet": {
       "type": "string",
-      "defaultValue": "LAB-PR-vNET1",
       "metadata": {
         "description": "vNET Name"
       }
     },
     "AddressSpace1": {
-      "type": "string",
-      "defaultValue": "10.10.0.0/16"
+      "type": "string"
     },
     "Subnet": {
       "type": "string",
-      "defaultValue": "LAB-PR-vNET1_10.10.10.x_24",
       "metadata": {
         "description": "The Subnet for the VM."
       }
     },
     "SubnetPrefix1": {
-      "type": "string",
-      "defaultValue": "10.10.10.0/24"
+      "type": "string"
     },
     "privateIPAddress": {
       "type": "String",
