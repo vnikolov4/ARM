@@ -57,6 +57,7 @@
     },
     "Subnet": {
       "type": "string",
+      "defaultValue": "Subnet-10_11_11_0-24",
       "metadata": {
         "description": "The Subnet for the VM."
       }
@@ -75,11 +76,13 @@
     },
     "dnsIP2": {
       "type": "String",
+      "defaultValue": "8.8.8.8",
       "metadata": {
         "description": "Static DNS"
       }
     },
     "saName": {
+      "defaultValue": "labprmgmtsa",
       "type": "String"
     }
   },
@@ -173,7 +176,7 @@
             "name": "[variables('osDiskName')]",
             "createOption": "FromImage",
             "managedDisk": {
-              "StorageAccountType": "PremiumSSD_LRS"
+              "StorageAccountType": "Premium_LRS"
             }
           }
         },
